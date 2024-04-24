@@ -14,9 +14,8 @@ class Game {
 
     // taking input from users.
     int input() throws InvalidInputException {
-        @SuppressWarnings("resource")
         Scanner sc = new Scanner(System.in);
-        System.out.println("Please Enter '0' for rock, '1' for Scissor ,'2' for paper:");
+        System.out.println("Please Enter '0' for rock, '1' for Scissor,'2' for paper:");
         user_choice = sc.nextInt();
         if (user_choice > 2 || user_choice < 0) {
             throw new InvalidInputException("Invalid input. Please choose a number from 0 to 2.");
@@ -63,10 +62,14 @@ class Game {
 
     boolean wantToContinue() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Do you want to continue? Type 'y' or 'n':");
+        System.out.println("Do you want to continue? Type 'y' for yes or 'n' for no:");
         String wantToContinue = scanner.next();
-        scanner.close();
-        return wantToContinue.equalsIgnoreCase("y");
+        if (wantToContinue.equalsIgnoreCase("y")) {
+            return true;
+        } else {
+            System.out.println("Thanks for playing!");
+            return false;
+        }
     }
 }
 
